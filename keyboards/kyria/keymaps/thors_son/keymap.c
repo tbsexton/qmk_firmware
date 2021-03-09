@@ -124,7 +124,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
      *                        |      |      |      |      |      |  |      |      |      |      |      |
      *                        `----------------------------------'  `----------------------------------'
      */
-    [CONFIG] = LAYOUT(_______, _______, _______, _______, _______, _______, _______, KC_F7, KC_F8, KC_F9, KC_F10, _______, _______, _______, _______, _______, _______, _______, _______, KC_F4, KC_F5, KC_F6, KC_F11, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, KC_F1, KC_F2, KC_F3, KC_F12, _______, _______, _______, _______, _______, LGUI(KC_L), RESET, _______, _______, _______, _______),
+    [CFG] = LAYOUT(_______, _______, _______, _______, _______, _______, _______, KC_F7, KC_F8, KC_F9, KC_F10, _______, _______, _______, _______, _______, _______, _______, _______, KC_F4, KC_F5, KC_F6, KC_F11, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, KC_F1, KC_F2, KC_F3, KC_F12, _______, _______, _______, _______, _______, LGUI(KC_L), RESET, _______, _______, _______, _______),
 
     // /*
     //  * Layer template
@@ -322,18 +322,6 @@ void encoder_update_user(uint8_t index, bool clockwise) {
                     tap_code16(LGUI(KC_Z));
                 } else {
                     tap_code16(SGUI(KC_Z));
-                }
-                break;
-            case LOWER:  // App switching
-                if (clockwise) {
-                    if (!is_cmd_tab_active) {
-                        is_cmd_tab_active = true;
-                        register_code(KC_LGUI);
-                    }
-                    cmd_tab_timer = timer_read();
-                    tap_code16(KC_TAB);
-                } else {
-                    tap_code16(S(KC_TAB));
                 }
                 break;
             case RAISE:  // Mouse wheel U/D
